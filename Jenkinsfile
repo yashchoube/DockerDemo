@@ -2,17 +2,17 @@ pipeline {
 agent none
     stages {
             stage('start') {
-                agent {
+                agent 'LabelAgent'
                     label 'LabelAgent'
-                    docker { image 'maven:3.9.0-eclipse-temurin-11' }
-                }
-                steps {
-                    bat 'mvn --version'
-                }
+
             }
         stage('Build') {
+            agent{
+        docker { image 'maven:3.9.0-eclipse-temurin-11' }
+        }
             steps {
                 // Get some code from a GitHub repository
+                 bat 'mvn --version'
                 git 'https://github.com/yashchoube/DockerDemo.git'
 
                 // Run Maven on a Unix agent.
