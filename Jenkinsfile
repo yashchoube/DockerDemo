@@ -1,13 +1,15 @@
 pipeline {
-    agent any
-
-    tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        //maven "M3"
-        maven 'apache-maven-3.0.1'
-    }
+    agent none
 
     stages {
+            stage('start') {
+                agent {
+                    docker { image 'maven:3.9.0-eclipse-temurin-11' }
+                }
+                steps {
+                    sh 'mvn --version'
+                }
+            }
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
