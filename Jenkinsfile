@@ -1,5 +1,6 @@
 pipeline {
 agent 'LabelAgent'
+
     stages {
             stage('start') {
                 agent {
