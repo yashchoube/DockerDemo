@@ -1,16 +1,13 @@
 pipeline {
-// agent {
-//
-// }
+  agent {
+         docker { image 'maven:3.9.0-eclipse-temurin-11' }
+         }
 //
 // “pipeline { agent { docker { image ‘maven:3.3.3’ } } stages { stage(‘build’){ steps { sh ‘mvn — version’ } } }}”
 
     stages {
             stage('start') {
-                agent {
 
-                    docker { image 'maven:3.9.0-eclipse-temurin-11' }
-                }
                 steps {
                     bat 'mvn --version'
                 }
