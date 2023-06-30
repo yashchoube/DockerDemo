@@ -1,13 +1,12 @@
 pipeline {
-    agent none
-
     stages {
             stage('start') {
                 agent {
+                    label LabelAgent
                     docker { image 'maven:3.9.0-eclipse-temurin-11' }
                 }
                 steps {
-                    sh 'mvn --version'
+                    bat 'mvn --version'
                 }
             }
         stage('Build') {
